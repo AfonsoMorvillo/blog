@@ -21,12 +21,21 @@ public class PublicacaoService {
 		this.autorRepository = autorRepository;
 	}
 
+	/**
+     * Lista todas as publicações ordenadas do mais recente para o mais antigo, e chamado pelo controller que envia para o html
+     */
 	public List<Publicacao> listarTodas() {
-		return publicacaoRepository.findAll();
+	    return publicacaoRepository.findAllByOrderByIdDesc();
 	}
 
+
+	 /**
+     * Salva uma nova publicação a partir de um DTO com as validacoes, igual em autor
+     */
 	public Publicacao salvar(PublicacaoDTO dto) {
 
+		// Busca o autor pelo ID passado no DTO, o autor foi selecionado no html e como so temos o codigo precisamos busacr ele para relacionar 
+		// Eu preciso do objeto todo, so o ID nao funciona
 		Autor autor = autorRepository.findById(dto.getAutorId()).orElse(null);
 
 		Publicacao p = new Publicacao();
@@ -42,6 +51,11 @@ public class PublicacaoService {
 		return publicacaoRepository.findById(id).orElse(null);
 	}
 
+	
+	 /**
+     * Atualiza uma publicação existente a partir do ID e DTO
+     * pega o existente no banco e seta os valores que estao vindo novos
+     */
 	public Publicacao atualizar(Long id, PublicacaoDTO dto) {
 
 		Publicacao existente = buscarPorId(id);

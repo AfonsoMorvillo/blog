@@ -22,15 +22,22 @@ public class Publicacao {
 	@Column(nullable = false, length = 100)
 	private String titulo;
 
-	@Column(columnDefinition = "TEXT")
+	@Column(columnDefinition = "TEXT") // será armazenado como tipo TEXT (pode guardar grandes textos)
 	private String texto;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false) 
 	@JoinColumn(name = "autor_id")
+	// Relacionamento N:1 com Autor
+	// Cada publicação tem **apenas um autor** (obrigatório)
+	// No banco de dados, cria a coluna "autor_id" que referencia "autor.id"
+	// Ou seja, "autor_id" é a chave estrangeira que liga a publicação ao autor
 	private Autor autor;
 
+	// (LocalDate será armazenado como DATE no banco)
 	private LocalDate dataPublicacao;
 
+
+	// Getter e Setters padrao
 	public Long getId() {
 		return id;
 	}

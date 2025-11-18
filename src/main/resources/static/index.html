@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog - Publicações</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/estilos.css" />
+
+    <style>
+      /* Container do card principal */
+      .card-publicacao {
+        border: 1px solid #aaa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        background: #fcfcfc;
+      }
+    </style>
+  </head>
+
+  <!-- Alerta de sucesso, o texto dele e alterado pra cada tipo de sucesso, edicao, alteracao exclusao -->
+  <div
+    id="alertaSucesso"
+    class="alert alert-success position-fixed"
+    style="top: 20px; right: 20px; display: none; z-index: 9999"
+  >
+    texto de sucesso
+  </div>
+
+  <!-- Modal de confirmação, para confirmar se deseja excluir ou nao -->
+  <div class="modal fade" id="modalConfirmarExclusao" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar exclusão</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+
+        <div class="modal-body" id="textoConfirmacao">
+          Deseja excluir a publicação?
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            id="btnConfirmarSim"
+          >
+            Sim
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Não
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <body>
+    <div class="container container-custom">
+      <h2 class="text-center mb-4">Blog</h2>
+		<!--O js vai pegar essa div e preencher com as publicacoes buscadas no banco-->
+      <div id="listaPublicacoes"></div> 
+
+      <div class="text-center mt-4 d-flex justify-content-center gap-3">
+        <a href="nova-publicacao.html" class="btn btn-primary">
+          Incluir nova publicação
+        </a>
+
+        <a href="novo-autor.html" class="btn btn-secondary">
+          Cadastrar autor
+        </a>
+      </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
+      <div class="container text-center">
+        <span class="text-body-secondary">
+          Nome aluno 1 / Nome aluno 2 / Turma / Ano © Senac - TADS DSW 2025
+        </span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

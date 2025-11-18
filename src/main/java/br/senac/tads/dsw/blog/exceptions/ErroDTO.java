@@ -1,23 +1,31 @@
 package br.senac.tads.dsw.blog.exceptions;
 
 import java.util.List;
+import java.util.Map;
 
+/**
+ * DTO usado para retornar erros de validação para o html.
+ * Contém:
+ * - mensagem geral
+ * - detalhes dos campos com suas mensagens de erro para colocar vermelho e deixar em baixo do campo certo
+ */
 public class ErroDTO {
 
 	private String mensagem;
-	private List<String> detalhes;
+	private Map<String, List<String>> campoDetalhes; // tem o nome do campo que esta com erro e seus erros
+													// ex: campoNome ; tamanho tem que ser 10...
 
-	public ErroDTO(String mensagem, List<String> detalhes) {
+	public ErroDTO(String mensagem, Map<String, List<String>> campoDetalhes) {
 		this.mensagem = mensagem;
-		this.detalhes = detalhes;
+		this.campoDetalhes = campoDetalhes;
 	}
 
 	public String getMensagem() {
 		return mensagem;
 	}
 
-	public List<String> getDetalhes() {
-		return detalhes;
+	public Map<String, List<String>> getDetalhes() {
+		return campoDetalhes;
 	}
 
 }

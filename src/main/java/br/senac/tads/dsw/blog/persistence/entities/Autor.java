@@ -7,18 +7,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "autor")
+@Entity // Indica que a classe é uma entidade JPA (vira uma tabela no banco)
+@Table(name = "autor") // Nome da tabela
 public class Autor {
+	// No banco de dados, isso será equivalente a:
+    // CREATE TABLE autor (
+    //     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    //     nome VARCHAR(100) NOT NULL
+    // );
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // Define o campo como chave primária
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // O banco gera o ID automaticamente (ordem crescente)
 	private Long id;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 100) // não pode ser null e tem no máximo 100 caracteres, isso no banco de dados
 	private String nome;
 	
 
+	// Getter e Setters padrao
 	public Long getId() {
 		return id;
 	}

@@ -17,6 +17,7 @@ public class PublicacaoDTO {
 	private String texto;
 
 	@NotNull(message = "O autor é obrigatório.")
+	// Garante que o autorId não seja nulo
 	private Long autorId;
 
 	@NotNull(message = "A data de publicação é obrigatória.")
